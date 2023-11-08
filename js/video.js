@@ -18,8 +18,6 @@ document.querySelector("#pause").addEventListener("click", function() {
     video.pause();
 });
 
-
-
 document.querySelector("#slower").addEventListener("click", function(){
 	console.log("Current speed is " + video.playbackRate);
 	video.playbackRate -= .1;
@@ -51,10 +49,21 @@ document.querySelector("#slider").addEventListener("change", function(){
 });
 
 document.querySelector("#mute").addEventListener("click", function(){
-	mutedvol = video.volume = 0
-	document.querySelector("#slider").value = 0
-	document.querySelector("#volume").innerHTML=video.volume*100+"%";
-	console.log("The urrent volume is 0")
+var button=document.querySelector("#mute")
+	if (video.muted){
+		video.muted =false;
+		console.log("Unmuted");
+		button.textContent = "Mute";
+	}
+	else{
+		video.muted=true;
+		console.log("Muted");
+		button.textContent = "Unmute";
+	}	
+	// mutedvol = video.volume = 0
+	// document.querySelector("#slider").value = 0
+	// document.querySelector("#volume").innerHTML=video.volume*100+"%";
+	// console.log("The current volume is 0")
 });
 
 document.querySelector("#vintage").addEventListener("click", function(){
